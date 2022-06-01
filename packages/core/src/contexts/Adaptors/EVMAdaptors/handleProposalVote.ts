@@ -18,8 +18,9 @@ const handleProposalVote = (
   setDepositVotes: (input: number) => void,
   transactionStatus?: TransactionStatus
 ) => {
+  console.log("start on ProposalVote");
   destinationBridge.on(
-    destinationBridge.filters.ProposalVote(null, null, null, null),
+    destinationBridge.filters.ProposalVote(),
     async (
       originDomainId: number,
       depositNonce: number,
@@ -27,6 +28,7 @@ const handleProposalVote = (
       dataHash: string,
       tx: Event
     ) => {
+      console.log("get ProposalVote", status);
       const txReceipt = await tx.getTransactionReceipt();
       if (status === 1) {
         setDepositVotes(depositVotes + 1);

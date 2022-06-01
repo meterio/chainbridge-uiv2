@@ -38,6 +38,17 @@ export const EVMDestinationAdaptorProvider = ({
   const destinationBridge = useDestinationBridgeHook(destinationChainConfig);
 
   useEffect(() => {
+    console.log("Proposal: ", {
+      depositNonce,
+      homeChainConfig,
+      destinationBridge,
+      depositVotes,
+      destinationChainConfig,
+      setDepositVotes,
+      setTransactionStatus,
+      setTransferTxHash,
+      tokensDispatch,
+    });
     if (
       destinationChainConfig &&
       homeChainConfig?.domainId !== null &&

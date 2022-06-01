@@ -137,6 +137,7 @@ const makeDeposit =
           handlerResponse: string,
           tx: Event
         ) => {
+          console.log("get depositNonce: ", depositNonce.toString());
           setDepositNonce(`${depositNonce.toString()}`);
           setTransactionStatus("In Transit");
           setHomeTransferTxHash(tx.transactionHash);

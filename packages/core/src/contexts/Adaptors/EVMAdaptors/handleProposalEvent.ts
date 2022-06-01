@@ -16,8 +16,9 @@ const handleProposalEvent = (
   setTransferTxHash: (input: string) => void,
   tokensDispatch: Dispatch<AddMessageAction | ResetAction>
 ) => {
+  console.log("start on ProposalEvent");
   destinationBridge.on(
-    destinationBridge.filters.ProposalEvent(null, null, null, null),
+    destinationBridge.filters.ProposalEvent(),
     async (
       originDomainId: number,
       depositNonce: number,
@@ -25,6 +26,7 @@ const handleProposalEvent = (
       dataHash: string,
       tx: Event
     ) => {
+      console.log("get ProposalEvent", status);
       const txReceipt = await tx.getTransactionReceipt();
       const proposalStatus = BigNumber.from(status).toNumber();
       switch (proposalStatus) {
